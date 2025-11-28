@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cambio de color</title>
+
+    <link rel="stylesheet" href="backgroound.css">
+   
+</head>
+<body>
+
+    <button onclick="cambiarFondo()">Cambiar colorcitoooooooooo</button>
+
+    <script>
+        function cambiarFondo() {
+            const colorAleatorio = "#" + Math.floor(Math.random() * 16777215).toString(16);
+            document.body.style.backgroundColor = colorAleatorio;
+        }
+    </script>
+
+</body>
+</html>

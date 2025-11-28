@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>globo</title>
+
+    <style>
+        .globo {
+            width: 200px;
+            height: 200px;
+            background-color: #e31d1d;
+            border-radius: 50%;
+            transition: 0.2s ease; 
+            cursor: pointer;
+        }
+        
+        </style>
+   </head>
+<body>
+
+    <div class="globo" id="globo"></div>
+
+    <script>
+        const globo = document.getElementById("globo");
+
+        const colores = ["red", "green", "blue"];
+        let colorIndex = 0;
+
+        const sizeInicial = 150;
+        const sizeMax = 420;
+
+        globo.addEventListener("click", () => {
+            const estilo = window.getComputedStyle(globo);
+            let ancho = parseInt(estilo.width);
+            let alto = parseInt(estilo.height);
+
+            let nuevoAncho = ancho + 10;
+            let nuevoAlto = alto + 10;
+
+            
+            if (nuevoAncho > sizeMax) {
+                
+                globo.style.transform = "scale(1.2)";
+                setTimeout(() => {
+                    globo.style.transform = "scale(1)";
+
+               
+                globo.style.width = sizeInicial + "px";
+                globo.style.height = sizeInicial + "px";
+                globo.style.backgroundColor = "red";
+                colorIndex = 0;
+            } , 150);
+            return;
+        }
+
+           
+            globo.style.width = nuevoAncho + "px";
+            globo.style.height = nuevoAlto + "px";
+
+            
+            colorIndex = (colorIndex + 1) % colores.length;
+            globo.style.backgroundColor = colores[colorIndex];
+            }); 
+    </script>
+
+</body>
+</html>
