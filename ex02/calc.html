@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+</head>
+<body>
+
+<h2>Calculadora</h2>
+
+<form id="calculatorForm">
+    
+    <input type="text" id="left" placeholder="Número 1"><br><br>
+    
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select><br><br>
+
+    <input type="text" id="right" placeholder="Número 2"><br><br>
+
+    <input type="submit" value="Try me!">
+</form>
+
+<script>
+const form = document.getElementById("calculatorForm");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault(); 
+
+    const left = parseInt(document.getElementById("left").value);
+    const right = parseInt(document.getElementById("right").value);
+    const operator = document.getElementById("operator").value;
+    
+    if (isNaN(left) || isNaN(right) || left < 0 || right < 0) {
+        alert("Error :(");
+        console.log("Error :(");
+        return;
+    }
+    
+    if ((operator === "/" || operator === "%") && right === 0) {
+        alert("It's over 9000!");
+        console.log("It's over 9000!");
+        return;
+    }
+
+    let result;
+    switch(operator) {
+        case "+": result = left + right; break;
+        case "-": result = left - right; break;
+        case "*": result = left * right; break;
+        case "/": result = left / right; break;
+        case "%": result = left % right; break;
+    }
+
+    alert("Resultado: " + result);
+    console.log("Resultado:", result);
+});
+
+setInterval(function() {
+    alert("Please, use me...");
+}, 30000);
+</script>
+
+</body>
+</html>
